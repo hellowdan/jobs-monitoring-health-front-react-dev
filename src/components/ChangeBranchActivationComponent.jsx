@@ -38,7 +38,7 @@ class ChangeBranchActivationComponent extends Component {
     }    
 
     changeBranchHandler= (event) => {
-        this.setState({active: event.target.value});
+        this.setState({branch: event.target.value});
     }    
     
     cancel(){
@@ -60,7 +60,7 @@ class ChangeBranchActivationComponent extends Component {
                                         <div className = "form-group">
                                             <label> Branch: </label>
                                             <input placeholder="Branch" name="branch" className="form-control" 
-                                                value='' onChange={this.changeBranchHandler}/>
+                                                value={this.state.branch} onChange={this.changeBranchHandler}/>
                                         </div>
 
                                         <button className="btn btn-success" onClick={this.activateBranch}>Activate Branch</button>

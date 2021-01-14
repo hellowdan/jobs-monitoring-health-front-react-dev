@@ -25,17 +25,19 @@ class AddBranchComponent extends Component {
         let originBranch = this.state.originBranch;
         let targetBranch = this.state.targetBranch;
 
+        console.log('new branch => ' + JSON.stringify(targetBranch));
+
         JobService.addBranch(originBranch, targetBranch).then(res =>{
             this.props.history.push('/jobs');
         });        
     }
 
     changeOriginBranchHandler= (event) => {
-        this.setState({active: event.target.value});
+        this.setState({originBranch: event.target.value});
     }        
 
     changeTargetBranchHandler= (event) => {
-        this.setState({active: event.target.value});
+        this.setState({targetBranch: event.target.value});
     }            
     
     cancel(){
@@ -57,13 +59,13 @@ class AddBranchComponent extends Component {
                                         <div className = "form-group">
                                             <label> Origin Branch: </label>
                                             <input placeholder="OriginBranch" name="originBranch" className="form-control" 
-                                                value='' onChange={this.changeOriginBranchHandler}/>
+                                                value={this.state.originBranch} onChange={this.changeOriginBranchHandler}/>
                                         </div>
 
                                         <div className = "form-group">
                                             <label> Target Branch: </label>
                                             <input placeholder="TargetBranch" name="targetBranch" className="form-control" 
-                                                value='' onChange={this.changeTargetBranchHandler}/>
+                                                value={this.state.targetBranch} onChange={this.changeTargetBranchHandler}/>
                                         </div>
 
                                         <button className="btn btn-success" onClick={this.addBranch}>Add Branch</button>
