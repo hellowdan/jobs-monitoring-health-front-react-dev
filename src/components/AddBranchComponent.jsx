@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import JobService from '../services/JobService.js';
 
-class AddJobComponent extends Component {
+class AddBranchComponent extends Component {
     constructor(props) {
         super(props)
 
@@ -79,5 +79,5 @@ class AddJobComponent extends Component {
     }
 }
 
-export default AddJobComponent
+export default AddBranchComponent
 

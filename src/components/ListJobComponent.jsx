@@ -60,7 +60,6 @@ class ListJobComponent extends Component {
 
                             <thead>
                                 <tr>
-                                    <th> Id</th>
                                     <th> Job</th>
                                     <th> Product</th>
                                     <th> Branch</th>
@@ -78,7 +77,6 @@ class ListJobComponent extends Component {
                                     this.state.jobs.map(
                                         job => 
                                         <tr key = {job.id}>
-                                             <td> {job.id}</td>
                                              <td> {job.job}</td>
                                              <td> {job.product}</td>
                                              <td> {job.branch}</td>
