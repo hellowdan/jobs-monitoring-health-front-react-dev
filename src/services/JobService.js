@@ -16,8 +16,8 @@ class JobService {
         return axios.get(JOB_API_BASE_URL + '/job/' + jobId);
     }
 
-    updateJob(job){
-        return axios.put(JOB_API_BASE_URL + '/update-job', job);
+    updateJob(jobId, job){
+        return axios.put(JOB_API_BASE_URL + '/update-job/' + jobId, job);
     }
 
     deleteJob(jobId){

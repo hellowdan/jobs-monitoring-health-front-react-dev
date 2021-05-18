@@ -75,7 +75,7 @@ class AddJobComponent extends Component {
                 this.props.history.push('/jobs');
             });
         }else{
-            JobService.updateJob(job, this.state.id).then( res => {
+            JobService.updateJob(this.state.id, job).then( res => {
                 this.props.history.push('/jobs');
             });
         }
