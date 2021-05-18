@@ -33,7 +33,7 @@ class ListJobComponent extends Component {
     }
 
     updateJob(id){
-        this.props.history.push(`/update-job/${id}`);
+        this.props.history.push(`/add-job/${id}`);
     }
 
     deleteJob(id){
