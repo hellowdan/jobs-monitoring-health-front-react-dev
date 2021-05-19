@@ -25,7 +25,10 @@ class JobService {
     }    
 
     addBranch(originBranch, targetBranch){
-        return axios.get(JOB_API_BASE_URL + '/add-branch/origin/' + originBranch + '/target/' + targetBranch);
+        return axios.get(JOB_API_BASE_URL + '/add-branch/origin/' + originBranch + 
+                                                       '/target/' + targetBranch + 
+                                                       '/replacedValuesInUrl/' + replacedValuesInUrl +
+                                                       '/newValuesInUrl/' + newValuesInUrl);
     }
 
     activateBranch(branch){

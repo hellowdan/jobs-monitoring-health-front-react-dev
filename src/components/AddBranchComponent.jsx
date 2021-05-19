@@ -7,13 +7,17 @@ class AddBranchComponent extends Component {
 
         this.state = {
             originBranch: '',
-            targetBranch: ''
+            targetBranch: '',
+            replacedValuesInUrl: '',
+            newValuesInUrl: ''
         }
         
         this.addBranch = this.addBranch.bind(this);
 
         this.changeOriginBranchHandler = this.changeOriginBranchHandler.bind(this);
         this.changeTargetBranchHandler = this.changeTargetBranchHandler.bind(this);
+        this.changeReplacedValuesInUrlHandler = this.changeReplacedValuesInUrlHandler.bind(this);
+        this.changeNewValuesInUrlHandler = this.changeNewValuesInUrlHandler.bind(this);
     }
 
     componentDidMount(){
@@ -24,10 +28,12 @@ class AddBranchComponent extends Component {
         e.preventDefault();
         let originBranch = this.state.originBranch;
         let targetBranch = this.state.targetBranch;
+        let replacedValuesInUrl = this.state.replacedValuesInUrl;
+        let newValuesInUrl = this.state.newValuesInUrl;
 
         console.log('new branch => ' + JSON.stringify(targetBranch));
 
-        JobService.addBranch(originBranch, targetBranch).then(res =>{
+        JobService.addBranch(originBranch, targetBranch, replacedValuesInUrl, newValuesInUrl).then(res =>{
             this.props.history.push('/jobs');
         });        
     }
@@ -38,7 +44,15 @@ class AddBranchComponent extends Component {
 
     changeTargetBranchHandler= (event) => {
         this.setState({targetBranch: event.target.value});
-    }            
+    }           
+    
+    changeReplacedValuesInUrlHandler= (event) => {
+        this.setState({replacedValuesInUrl: event.target.value});
+    }        
+
+    changeNewValuesInUrlHandler= (event) => {
+        this.setState({newValuesInUrl: event.target.value});
+    }               
     
     cancel(){
         this.props.history.push('/jobs');
@@ -67,6 +81,18 @@ class AddBranchComponent extends Component {
                                             <input placeholder="TargetBranch" name="targetBranch" className="form-control" 
                                                 value={this.state.targetBranch} onChange={this.changeTargetBranchHandler}/>
                                         </div>
+
+                                        <div className = "form-group">
+                                            <label> Values to be replaced in url (use | as a separator): </label>
+                                            <input placeholder="ReplacedValuesInUrl" name="replacedValuesInUrl" className="form-control" 
+                                                value={this.state.replacedValuesInUrl} onChange={this.changeReplacedValuesInUrlHandler}/>
+                                        </div>
+
+                                        <div className = "form-group">
+                                            <label> New values in url (use | as a separator): </label>
+                                            <input placeholder="NewValuesInUrl" name="newValuesInUrl" className="form-control" 
+                                                value={this.state.newValuesInUrl} onChange={this.changeNewValuesInUrlHandler}/>
+                                        </div>                                                                                
 
                                         <button className="btn btn-success" onClick={this.addBranch}>Add Branch</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
