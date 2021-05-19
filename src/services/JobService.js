@@ -24,7 +24,7 @@ class JobService {
         return axios.delete(JOB_API_BASE_URL + '/delete-job/',  + jobId);
     }    
 
-    addBranch(originBranch, targetBranch){
+    addBranch(originBranch, targetBranch, replacedValuesInUrl, newValuesInUrl){
         return axios.get(JOB_API_BASE_URL + '/add-branch/origin/' + originBranch + 
                                                        '/target/' + targetBranch + 
                                                        '/replacedValuesInUrl/' + replacedValuesInUrl +
