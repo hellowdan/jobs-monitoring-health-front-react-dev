@@ -15,6 +15,7 @@ function App() {
                 <Switch> 
                       <Route path = "/" exact component = {ListJobComponent}></Route>
                       <Route path = "/jobs" component = {ListJobComponent}></Route>
+                      <Route path = "/active-jobs" component = {ListJobComponent}></Route>
                       <Route path = "/view-job/:id" component = {ViewJobComponent}></Route>
                       <Route path = "/add-job/:id" component = {AddJobComponent}></Route>
                       <Route path = "/add-branch" component = {AddBranchComponent}></Route>

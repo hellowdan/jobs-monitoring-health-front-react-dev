@@ -9,6 +9,7 @@ class ListJobComponent extends Component {
                 jobs: []
         }
         this.loadJobs = this.loadJobs.bind(this);
+        this.loadActiveJobs = this.loadActiveJobs.bind(this);
         this.addJob = this.addJob.bind(this);
         this.addBranch = this.addBranch.bind(this);
         this.changeBranch = this.changeBranch.bind(this);
@@ -19,6 +20,12 @@ class ListJobComponent extends Component {
             this.setState({ jobs: res.data});
         });
     }
+
+    loadActiveJobs(){
+        JobService.getActiveJobs().then((res) => {
+            this.setState({ jobs: res.data});
+        });
+    }    
 
     viewJob(id){
         this.props.history.push(`/view-job/${id}`);
@@ -56,6 +63,7 @@ class ListJobComponent extends Component {
                  <h2 className="text-center">Jobs</h2>
                  <div className = "row">
                     <button className="btn btn-primary" onClick={this.loadJobs}> Load Jobs</button>
+                    <button className="btn btn-primary" onClick={this.loadActiveJobs}> Load Active Jobs</button>                    
                     <button className="btn btn-primary" onClick={this.addJob} style={{marginLeft: "10px"}}> Add Job</button>
                     <button className="btn btn-info" onClick={this.addBranch} style={{marginLeft: "10px"}}> Add Branch</button>
                     <button className="btn btn-info" onClick={this.changeBranch} style={{marginLeft: "10px"}}> Change Branch Activation</button>

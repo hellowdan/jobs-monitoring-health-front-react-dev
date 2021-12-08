@@ -8,6 +8,10 @@ class JobService {
         return axios.get(JOB_API_BASE_URL + '/jobs');
     }
 
+    getActiveJobs(){
+        return axios.get(JOB_API_BASE_URL + '/active-jobs');
+    }    
+
     addJob(job){
         return axios.post(JOB_API_BASE_URL + '/add-job', job);
     }
